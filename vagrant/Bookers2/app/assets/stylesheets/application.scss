@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+
+	@import "bootstrap-sprockets";
+	@import "bootstrap";
+
+
+.btn-wrapper a{
+	color: #666;
+}
+
+.btn-wrapper a:hover{
+    color: #fff;
+}
