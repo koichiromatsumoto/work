@@ -1,11 +1,26 @@
 class User < ApplicationRecord
 
+  validates :name,
+    uniqueness: true,
+    length: {minimum: 2, maximum: 20}
+  validates :email,
+    presence: true
+  validates :introduction,
+    length: {maximum: 50}
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :Book, dependent: :destroy
+  def email_required?
+  	false
+  end
+
+  def email_changed?
+  	false
+  end
+
+  has_many :books, dependent: :destroy
 
   attachment :profile_image
 

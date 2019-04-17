@@ -11,7 +11,7 @@
 
   <body>
     <header>
-      <nav class="navbar navbar-inverse">
+      <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample">
@@ -20,22 +20,23 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="">Bookers</a>
+            <span>Bookers</span>
           </div>
 
           <div class="collapse navbar-collapse" id="navbarEexample">
             <ul class="nav navbar-nav navbar-right">
 <!-- ※※あとでaタグからlink_toにかえる！！※※ -->
-
-                <li><%= link_to "Home", root_path ,class:"glyphicon glyphicon-home" %></li>
+              
                 <% if user_signed_in? %>
-                  <li><%= link_to "Users", users_path ,class:"glyphicon glyphicon-user" %></li>
-                  <li><%= link_to "Books", books_path ,class:"glyphicon glyphicon-book" %></li>
-                  <li><%= link_to "logout", destroy_user_session_path, method: :delete ,class:"glyphicon glyphicon-log-out" %></li>
+                  <li><%= link_to "  Home", user_path(current_user.id) ,class:"glyphicon glyphicon-home" %></li>
+                  <li><%= link_to "  Users", users_path ,class:"glyphicon glyphicon-user" %></li>
+                  <li><%= link_to "  Books", books_path ,class:"glyphicon glyphicon-book" %></li>
+                  <li><%= link_to "  logout", destroy_user_session_path, method: :delete ,class:"glyphicon glyphicon-log-out" %></li>
                 <% else %>
-                  <li><a href=""><span class="glyphicon glyphicon-link"></span>  About  </a></li>
-                  <li><a href=""><span class="glyphicon glyphicon-edit"></span>  sign up  </a></li>
-                  <li><a href=""><span class="glyphicon glyphicon-log-in"></span>  login  </a></li>
+                  <li><%= link_to "  Home", root_path ,class:"glyphicon glyphicon-home" %></li>
+                  <li><%= link_to "  About", about_path, class:"glyphicon glyphicon-link" %></li>
+                  <li><%= link_to "  sign up", new_user_registration_path, class:"glyphicon glyphicon-edit" %></li>
+                  <li><%= link_to "  login", new_user_session_path, class:"glyphicon glyphicon-log-in" %></li>
                 <% end %>
 
 <!-- ※※ここまで※※ -->
@@ -43,6 +44,14 @@
           </div>
         </div>
       </nav>
+
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "#{key}") %>
+      <% end %>
+
+      
+      
+
     </header>
 
     <%= yield %>

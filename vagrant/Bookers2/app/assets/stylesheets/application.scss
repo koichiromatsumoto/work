@@ -17,6 +17,21 @@
 	@import "bootstrap-sprockets";
 	@import "bootstrap";
 
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body{
+	margin-top: 60px;
+}
+
+.navbar-header span{
+	padding-top: 10px;
+	font-size: 20px;
+	color: #fff;
+}
 
 .btn-wrapper a{
 	color: #666;
@@ -25,3 +40,39 @@
 .btn-wrapper a:hover{
     color: #fff;
 }
+
+.form-group .form-control{
+	width: 30%;
+}
+
+a:visited{
+	color: #666;
+}
+
+.field{
+	margin-bottom: 15px;
+}
+
+.update-btn .btn{
+	width: 100%;
+}
+
+.actions-update .btn{
+	width: 100%
+}
+
+.links{
+	margin-top: 10px;
+	margin-left: 15px;
+}
+
+.notice{
+	color: green;
+	text-align: left;
+	margin-right: auto;
+	margin-left: auto;
+	padding-right: 15px;
+    padding-left: 15px;
+}
+
+
