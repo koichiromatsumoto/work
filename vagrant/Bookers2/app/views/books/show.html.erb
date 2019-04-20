@@ -1,3 +1,7 @@
+
+
+
+
 <div class="body">
 	<div class="container">
 		<div class="row">
@@ -10,14 +14,14 @@
 					<thead>
 
 						<tr>
-							<td><%= attachment_image_tag @current_book.user, :profile_image, size:'60x60', format: 'jpeg', fallback: "no_image.jpg" %><%= link_to user_path(@current_book.user_id) do %><br><%= @current_book.user.name %><% end %></td>
+							<td><%= attachment_image_tag @current_book.user, :profile_image, size:'60x60', format: 'jpeg', fallback: "no_image.jpg" %><%= link_to user_path(@current_book.user_id), class:"user_#{@current_book.user_id}" do %><br><%= @current_book.user.name %><% end %></td>
 							<td><%= @current_book.book_title %></td>
 							<td><%= @current_book.book_body %></td>
 						
 					    <% if @current_book.user_id == current_user.id %>
 
-							<td><%= link_to "Edit",edit_book_path(@current_book.id), class:"btn-sm btn-success" %></td>
-							<td><%= link_to "Destroy", book_path(@current_book.id), method: :delete, class:"btn-sm btn-danger", data:{confirm: '本当に削除しますか？'} %></td>
+							<td><%= link_to "Edit",edit_book_path(@current_book.id), class:"edit_book_#{@current_book.id} btn-sm btn-success" %></td>
+							<td><%= link_to "Destroy", book_path(@current_book.id), method: :delete, class:"destroy_book_#{@current_book.id} btn-sm btn-danger", data:{confirm: '本当に削除しますか？'} %></td>
 						<% end %>
 						</tr>
 
